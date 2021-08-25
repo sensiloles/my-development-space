@@ -1,40 +1,73 @@
-import { Configuration } from 'webpack';
+import { Configuration as WebpackConfiguration } from 'webpack';
+import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-// import 'webpack-dev-server';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration;
+}
+
+const sourcePath = path.join(__dirname, 'src');
+const outPath = path.join(__dirname, 'dist');
 
 const config: Configuration = {
   mode: 'development',
-  entry: {
-    app: path.join(__dirname, 'src', 'index.tsx'),
-  },
   target: 'web',
+  context: sourcePath,
+  entry: sourcePath,
+  output: {
+    publicPath: outPath,
+    filename: 'main.bundle.js',
+    hotUpdateChunkFilename: 'hot/hot-update.js',
+    hotUpdateMainFilename: 'hot/hot-update.json'
+  },
+  devtool: 'inline-source-map',
+  devServer: {
+    static: {
+      directory: outPath,
+      watch: true
+    },
+    compress: true,
+    port: 9000,
+    historyApiFallback: true,
+    devMiddleware: {
+      writeToDisk: true
+    }
+  },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js']
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         use: 'babel-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.(ts|tsx)$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
-    ],
-  },
-  output: {
-    filename: 'main.bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'index.html'),
+      template: path.join(sourcePath, 'index.html')
     }),
-  ],
+    new CleanWebpackPlugin()
+  ]
 };
 
 export default config;

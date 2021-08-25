@@ -36,7 +36,14 @@
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "prettier/prettier": ["off", { "endOfLine": "auto" }],
     "no-multiple-empty-lines": "off",
-    "eol-last": "warn"
+    "eol-last": "warn",
+    "object-curly-spacing": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "semi": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "object-curly-newline": "off",
+    "comma-dangle": ["error", "never"]
   },
   "settings": {
     "import/resolver": {
