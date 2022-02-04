@@ -8,7 +8,7 @@ interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
 }
 
-const sourcePath = path.join(__dirname, 'src');
+const sourcePath = path.join(__dirname, '/');
 const outPath = path.join(__dirname, 'dist');
 
 const config: Configuration = {

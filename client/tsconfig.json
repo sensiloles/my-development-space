@@ -11,5 +11,6 @@
     "esModuleInterop": true,
     "sourceMap": true
   },
-  "include": ["src"]
+  "include": ["../client"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }
