@@ -2,10 +2,10 @@
   "name": "my-development-space",
   "version": "1.0.0",
   "description": "professional space",
-  "main": "dist/app.js",
-  "type": "module",
+  "main": "build/app.js",
+  "type": "commonjs",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "start": "tsc && node build/app.js",
     "lint": "eslint --config .eslintrc.json src/**/*.{ts,tsx,js,jsx,json}",
     "format": "prettier --config .prettierrc.json --write src/**/*.{ts,js,json}",
     "build": "tsc"

@@ -9,7 +9,7 @@ interface Configuration extends WebpackConfiguration {
 }
 
 const sourcePath = path.join(__dirname, 'src');
-const outPath = path.join(__dirname, 'dist');
+const outPath = path.join(__dirname, 'build');
 
 const config: Configuration = {
   mode: 'development',
@@ -17,6 +17,7 @@ const config: Configuration = {
   context: sourcePath,
   entry: sourcePath,
   output: {
+    path: outPath,
     publicPath: outPath,
     filename: 'main.bundle.js',
     hotUpdateChunkFilename: 'hot/hot-update.js',
