@@ -36,7 +36,8 @@ const config: Configuration = {
     }
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js'],
+    modules: ['../client', 'node_modules']
   },
   module: {
     rules: [

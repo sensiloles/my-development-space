@@ -39,15 +39,22 @@
     "eol-last": "warn",
     "object-curly-spacing": "warn",
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["warn"],
+    "@typescript-eslint/no-unused-vars": ["error", { "args": "none" }],
     "semi": "warn",
     "react/jsx-props-no-spreading": "off",
     "object-curly-newline": "off",
-    "comma-dangle": ["error", "never"]
+    "comma-dangle": ["error", "never"],
+    "jsx-a11y/label-has-associated-control": "off",
+    "operator-linebreak": "off",
+    "no-undef": "off",
+    "arrow-body-style": "off"
   },
   "settings": {
     "import/resolver": {
-      "typescript": {}
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "../client"]
+      }
     }
   }
 }

@@ -1,18 +1,43 @@
-// import { Module } from "@nestjs/common";
-// import { GraphQLModule } from "@nestjs/graphql";
-
-// @Module({
-//   imports: [GraphQLModule.forRoot({})],
-// })
-// export class AppModule {}
-
 import express from "express";
+import mysql from "mysql2";
+import cors from "cors";
 
 const app = express();
+const host = "localhost";
 const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("Test res");
+const dataBaseConnection = mysql.createConnection({
+  host,
+  user: "my_admin",
+  password: "",
+});
+
+dataBaseConnection.connect((err) => {
+  if (err) throw err;
+  dataBaseConnection.query(
+    "CREATE DATABASE IF NOT EXISTS my_development_space;",
+    (err, result) => {
+      if (err) throw err;
+      console.log("Connected!", result);
+    }
+  );
+});
+
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET, PUT, POST, DELETE, OPTIONS",
+    // allowedHeaders:
+    //   "Origin, X-Requested-With, Content-Type, Accept, Cache-Control",
+  })
+);
+
+app.get("/user/auth", (req, res) => {
+  console.log("Connected!", req, res);
+});
+
+app.post("/user/auth", (req, res) => {
+  res.send("hello world");
 });
 
 app.listen(port, () => {

@@ -1,12 +1,13 @@
 import React from 'react';
-// import { BrowserRouter, Switch, Redirect, Route } from 'react-router-dom';
+import AuthenticationProvider from 'providers/authentication';
 
 import renderRoutes from './routes';
 
 const App = () => (
   <div>
-    <span>App</span>
-    {renderRoutes()}
+    <div className="app-main-container">
+      <AuthenticationProvider>{renderRoutes()}</AuthenticationProvider>
+    </div>
   </div>
 );
 

@@ -9,7 +9,8 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": "../client"
   },
   "include": ["../client"],
   "exclude": ["node_modules", "**/*.spec.ts"]
