@@ -1,15 +1,25 @@
 {
-  "name": "my-development-space-api",
+  "name": "my-development-space",
   "version": "1.0.0",
-  "author": "Alexey Filippov",
-  "license": "MIT",
+  "description": "professional space",
   "main": "dist/app.js",
+  "type": "module",
   "scripts": {
-    "build": "tsc",
     "start": "tsc && node dist/app.js",
     "lint": "eslint --config .eslintrc.json src/**/*.{ts,tsx,js,jsx,json}",
-    "format": "prettier --config .prettierrc.json --write src/**/*.{ts,js,json}"
+    "format": "prettier --config .prettierrc.json --write src/**/*.{ts,js,json}",
+    "build": "tsc"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sensiloles/my-development-space.git"
+  },
+  "author": "Alexey Filippov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sensiloles/my-development-space/issues"
+  },
+  "homepage": "https://github.com/sensiloles/my-development-space#readme",
   "dependencies": {
     "apollo-server-express": "^3.10.0",
     "cors": "^2.8.5",
