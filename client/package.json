@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.babel.ts --hot --open",
-    "lint": "eslint src/*",
-    "format": "prettier --config .prettierrc.json --write src/*",
+    "lint": "eslint --config .eslintrc.json src/**/*.{ts,tsx,js,jsx,json}",
+    "format": "prettier --config .prettierrc.json --write src/**/*.{ts,tsx,js,jsx,json}",
     "build": "webpack --config webpack.config.babel.ts"
   },
   "repository": {

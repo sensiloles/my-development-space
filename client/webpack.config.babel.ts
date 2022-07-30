@@ -8,7 +8,7 @@ interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
 }
 
-const sourcePath = path.join(__dirname, '/');
+const sourcePath = path.join(__dirname, 'src');
 const outPath = path.join(__dirname, 'dist');
 
 const config: Configuration = {
@@ -37,7 +37,7 @@ const config: Configuration = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
-    modules: ['../client', 'node_modules']
+    modules: [sourcePath, 'node_modules']
   },
   module: {
     rules: [

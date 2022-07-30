@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
-import UserAPI from '../../api/user/UserAPI';
+
+import UserAPI from 'api/user/UserAPI';
 
 interface ContextType {
   isAuthenticated: boolean;

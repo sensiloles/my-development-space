@@ -1,7 +1,7 @@
 import React from 'react';
-import AuthenticationProvider from 'providers/authentication';
 
-import renderRoutes from './routes';
+import AuthenticationProvider from 'providers/authentication';
+import renderRoutes from 'routes';
 
 function App() {
   return (

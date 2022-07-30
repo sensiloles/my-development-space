@@ -1,6 +1,7 @@
 import React from 'react';
-import Input from '../components/Input';
-import { useAuthenticationContext } from '../providers/authentication';
+
+import Input from 'components/Input';
+import { useAuthenticationContext } from 'providers/authentication';
 import './home-page.scss';
 
 function Home() {

@@ -29,7 +29,7 @@ class RequestBuilder {
     this.initialize(params);
   }
 
-  isFormDataBody = (body: RequestBuilderParams['body']): body is FormData => {
+  private isFormDataBody = (body: RequestBuilderParams['body']): body is FormData => {
     return body instanceof FormData;
   };
 

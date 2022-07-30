@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
     "module": "commonjs",
-    "esModuleInterop": true,
     "target": "es6",
+    "lib": ["es2015"],
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "sourceMap": true,
-    "outDir": "dist",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": "../server/src"
   },
-  "lib": ["es2015"]
+  "include": ["../server/src"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

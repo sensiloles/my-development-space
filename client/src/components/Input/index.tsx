@@ -1,10 +1,11 @@
 import * as React from 'react';
+
 import {
   FocusEventsHandlers,
   KeyboardEventsHandlers,
   MouseEventsHandlers,
   SelectionEventHandler
-} from '../../types/EventsHandlers';
+} from 'types/EventsHandlers';
 
 type RequiredProps = Required<
   Pick<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'type'>

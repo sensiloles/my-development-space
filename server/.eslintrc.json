@@ -1,36 +1,27 @@
 {
   "env": {
-    "browser": true,
     "es2021": true
   },
   "extends": [
-    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "prettier/prettier",
-    "airbnb"
+    "airbnb-base"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "react-hooks"],
+  "plugins": ["@typescript-eslint"],
   "rules": {
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
-    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
     "import/extensions": ["error", "ignorePackages", { "ts": "never", "tsx": "never" }],
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
     "max-len": ["warn", { "code": 100 }],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
     "import/prefer-default-export": "off",
-    "react/prop-types": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-trailing-spaces": "off",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
@@ -41,10 +32,8 @@
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["error", { "args": "none" }],
     "semi": "warn",
-    "react/jsx-props-no-spreading": "off",
     "object-curly-newline": "off",
     "comma-dangle": ["error", "never"],
-    "jsx-a11y/label-has-associated-control": "off",
     "operator-linebreak": "off",
     "no-undef": "off",
     "arrow-body-style": "off",
@@ -53,8 +42,8 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "moduleDirectory": ["node_modules", "../client/src"]
+        "extensions": [".js", ".ts"],
+        "moduleDirectory": ["node_modules", "../server/src"]
       }
     }
   }

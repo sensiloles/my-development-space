@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import { Home, Test } from '../pages';
+import { Home, Test } from 'pages';
 
 interface InternalRoute {
   key: number;

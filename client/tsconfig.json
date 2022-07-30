@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "module": "commonjs",
-    "target": "es5",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "react",
     "noImplicitAny": true,
@@ -10,8 +10,9 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "sourceMap": true,
-    "baseUrl": "../client"
+    "experimentalDecorators": true,
+    "baseUrl": "../client/src"
   },
-  "include": ["../client"],
+  "include": ["../client/src"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
