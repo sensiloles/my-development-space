@@ -3,7 +3,7 @@ import Input from '../components/Input';
 import { useAuthenticationContext } from '../providers/authentication';
 import './home-page.scss';
 
-const Home = () => {
+function Home() {
   const {
     isAuthenticated,
     login,
@@ -32,6 +32,6 @@ const Home = () => {
       </button>
     </form>
   );
-};
+}
 
 export default Home;

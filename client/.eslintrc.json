@@ -47,7 +47,8 @@
     "jsx-a11y/label-has-associated-control": "off",
     "operator-linebreak": "off",
     "no-undef": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "class-methods-use-this": "off"
   },
   "settings": {
     "import/resolver": {

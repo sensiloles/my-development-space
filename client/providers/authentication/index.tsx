@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import UserAPI from '../../api/user/UserAPI';
 
 interface ContextType {
@@ -25,7 +25,7 @@ const AuthenticationContext = React.createContext<ContextType>(DEFAULT_CONTEXT);
 
 export const useAuthenticationContext = () => React.useContext(AuthenticationContext);
 
-const AuthenticationProvider = ({ children }: { children: React.ReactNode }) => {
+function AuthenticationProvider({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setAuthenticated] = React.useState(false);
   const [login, setLogin] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -38,33 +38,36 @@ const AuthenticationProvider = ({ children }: { children: React.ReactNode }) => 
     setPassword(event.currentTarget.value);
   };
 
-  const onAuthenticationSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      const response = new UserAPI().authenticate({ login, password });
-      setAuthenticated(true);
-      // eslint-disable-next-line no-console
-      console.log(response);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error);
-    }
-  };
+  const onAuthenticationSubmit = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      try {
+        const response = new UserAPI().authenticate({ login, password });
+        setAuthenticated(true);
+        // eslint-disable-next-line no-console
+        console.log(response);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      }
+    },
+    [login, password]
+  );
+
+  const contextValue = useMemo(() => {
+    return {
+      isAuthenticated,
+      login,
+      password,
+      onLoginChange,
+      onPasswordChange,
+      onAuthenticationSubmit
+    };
+  }, [isAuthenticated, login, onAuthenticationSubmit, password]);
 
   return (
-    <AuthenticationContext.Provider
-      value={{
-        isAuthenticated,
-        login,
-        password,
-        onLoginChange,
-        onPasswordChange,
-        onAuthenticationSubmit
-      }}
-    >
-      {children}
-    </AuthenticationContext.Provider>
+    <AuthenticationContext.Provider value={contextValue}>{children}</AuthenticationContext.Provider>
   );
-};
+}
 
 export default AuthenticationProvider;

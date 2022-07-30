@@ -30,6 +30,8 @@ type HandlersProps = FocusEventsHandlers<HTMLInputElement> &
 
 type Props = RequiredProps & OptionalProps & HandlersProps;
 
-const Input = (props: Props) => <input {...props} />;
+function Input(props: Props) {
+  return <input {...props} />;
+}
 
 export default Input;

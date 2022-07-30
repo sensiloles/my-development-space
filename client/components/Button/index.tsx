@@ -7,7 +7,7 @@ interface Props {
   disabled: boolean;
 }
 
-const Button = (props: Props) => {
+function Button(props: Props) {
   const { title, onClick, ariaLabel, disabled } = props;
   return (
     <button
@@ -19,6 +19,6 @@ const Button = (props: Props) => {
       disabled={disabled}
     />
   );
-};
+}
 
 export default Button;

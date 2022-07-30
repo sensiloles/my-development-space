@@ -13,7 +13,7 @@ const ACCESS_CONTROL_ALLOW_HEADERS = 'Access-Control-Allow-Headers';
 const CACHE_CONTROL = 'Cache-Control';
 
 interface ObjectBody {
-  [key: string]: string;
+  [key: string]: string | number | boolean;
 }
 
 export interface RequestBuilderParams {
@@ -29,8 +29,8 @@ class RequestBuilder {
     this.initialize(params);
   }
 
-  isFormDataPayload = (formData: RequestBuilderParams['body']): formData is FormData => {
-    return formData instanceof FormData;
+  isFormDataBody = (body: RequestBuilderParams['body']): body is FormData => {
+    return body instanceof FormData;
   };
 
   private initialize = (params: RequestBuilderParams) => {
@@ -48,7 +48,7 @@ class RequestBuilder {
           'Origin, X-Requested-With, Content-Type, Accept, Cache-Control'
         ]
       ]),
-      body: this.isFormDataPayload(body) ? body : JSON.stringify(body)
+      body: this.isFormDataBody(body) ? body : JSON.stringify(body)
     };
 
     this.request = new Request(url, requestInit);

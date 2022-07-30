@@ -3,12 +3,14 @@ import AuthenticationProvider from 'providers/authentication';
 
 import renderRoutes from './routes';
 
-const App = () => (
-  <div>
-    <div className="app-main-container">
-      <AuthenticationProvider>{renderRoutes()}</AuthenticationProvider>
+function App() {
+  return (
+    <div>
+      <div className="app-main-container">
+        <AuthenticationProvider>{renderRoutes()}</AuthenticationProvider>
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 export default App;
