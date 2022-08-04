@@ -5,10 +5,10 @@
   "main": "index.tsx",
   "type": "module",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.babel.ts --hot --open",
+    "start": "webpack-dev-server --config scripts/webpack.config.babel.ts --hot --open",
     "lint": "eslint --config .eslintrc.json src/**/*.{ts,tsx,js,jsx,json}",
     "format": "prettier --config .prettierrc.json --write src/**/*.{ts,tsx,js,jsx,json}",
-    "build": "webpack --config webpack.config.babel.ts"
+    "build": "webpack --config scripts/webpack.config.babel.ts"
   },
   "repository": {
     "type": "git",

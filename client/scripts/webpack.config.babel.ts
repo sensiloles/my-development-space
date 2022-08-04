@@ -1,45 +1,65 @@
 import { Configuration as WebpackConfiguration } from 'webpack';
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
-import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import constants from './constants';
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
 }
 
-const sourcePath = path.join(__dirname, 'src');
-const outPath = path.join(__dirname, 'build');
+const { host, port, src, entry, build, html, stats } = constants;
 
 const config: Configuration = {
   mode: 'development',
   target: 'web',
-  context: sourcePath,
-  entry: sourcePath,
+  context: src,
+  entry,
   output: {
-    path: outPath,
-    publicPath: outPath,
-    filename: 'main.bundle.js',
+    path: build,
+    publicPath: build,
+    filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
+    // TODO: move to prod config
+    // filename: '[name].[chunkhash].js',
+    // chunkFilename: '[name].[chunkhash].chunk.js',
     hotUpdateChunkFilename: 'hot/hot-update.js',
     hotUpdateMainFilename: 'hot/hot-update.json'
   },
-  devtool: 'inline-source-map',
+  devtool: 'eval-source-map',
   devServer: {
+    host,
+    port,
+    compress: true,
+    historyApiFallback: true,
     static: {
-      directory: outPath,
+      directory: build,
       watch: true
     },
-    compress: true,
-    port: 9000,
-    historyApiFallback: true,
     devMiddleware: {
       writeToDisk: true
     }
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
-    modules: [sourcePath, 'node_modules']
+    modules: [src, 'node_modules']
   },
+  // TODO: move to prod config
+  // optimization: {
+  //   runtimeChunk: 'single',
+  //   splitChunks: {
+  //     chunks: 'all',
+  //     maxInitialRequests: Infinity,
+  //     minSize: 100000,
+  //     cacheGroups: {
+  //       vendor: {
+  //         test: /[\\/]node_modules[\\/](?!@r1)\w*([\\/]|$)/,
+  //         name: 'vendor',
+  //         priority: 10
+  //       }
+  //     }
+  //   }
+  // },
   module: {
     rules: [
       {
@@ -66,10 +86,11 @@ const config: Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(sourcePath, 'index.html')
+      template: html
     }),
     new CleanWebpackPlugin()
-  ]
+  ],
+  stats
 };
 
 export default config;
