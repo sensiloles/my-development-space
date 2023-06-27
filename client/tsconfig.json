@@ -12,7 +12,8 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "baseUrl": "../client/src",
-    "strict": true
+    "strict": true,
+    "types": ["node"]
   },
   "include": ["../client/src"],
   "exclude": ["node_modules", "**/*.spec.ts"]
