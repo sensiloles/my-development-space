@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-
-import UserAPI from 'api/user/UserAPI';
+import { userAPIClient } from 'api/user';
 
 interface ContextType {
   isAuthenticated: boolean;
@@ -40,10 +39,10 @@ function AuthenticationProvider({ children }: { children: React.ReactNode }) {
   };
 
   const onAuthenticationSubmit = useCallback(
-    (event: React.FormEvent<HTMLFormElement>) => {
+    async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       try {
-        const response = new UserAPI().authenticate({ login, password });
+        const response = await userAPIClient.authenticate({ login, password });
         setAuthenticated(true);
         // eslint-disable-next-line no-console
         console.log(response);

@@ -11,7 +11,8 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "experimentalDecorators": true,
-    "baseUrl": "../client/src"
+    "baseUrl": "../client/src",
+    "strict": true
   },
   "include": ["../client/src"],
   "exclude": ["node_modules", "**/*.spec.ts"]
